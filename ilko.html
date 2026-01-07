@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jacaylkeyga</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(45deg, #ffafbd, #ffc3a0);
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .header {
+            margin: 30px 0;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.8rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            color: #6f42c1;
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        .image-container {
+            width: 90%;
+            max-width: 500px;
+            height: 500px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+            margin-bottom: 30px;
+        }
+
+        .upload-section {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .upload-icon {
+            font-size: 70px;
+            color: #ff4081;
+            margin-bottom: 20px;
+        }
+
+        .upload-text {
+            color: #666;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        .upload-btn {
+            background: linear-gradient(to right, #ff4081, #ff6b6b);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 1.2rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(255, 64, 129, 0.4);
+        }
+
+        .upload-btn:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(255, 64, 129, 0.6);
+        }
+
+        #previewImage {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: none;
+        }
+
+        .hidden-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, #ff9a9e, #fad0c4);
+            display: none;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 30px;
+        }
+
+        .flowers-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+
+        .flower {
+            font-size: 3.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .message {
+            color: #5a189a;
+            font-size: 1.8rem;
+            font-weight: bold;
+            text-align: center;
+            line-height: 1.6;
+            padding: 0 20px;
+            max-width: 90%;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-25px) rotate(10deg); }
+        }
+
+        .instruction {
+            color: #666;
+            font-size: 1.1rem;
+            margin-top: 15px;
+            font-style: italic;
+        }
+
+        .love-letter {
+            background: white;
+            padding: 35px;
+            border-radius: 20px;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 700px;
+            width: 90%;
+        }
+
+        .love-letter h2 {
+            color: #d63384;
+            margin-bottom: 25px;
+            font-size: 2rem;
+        }
+
+        .love-letter p {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        input[type="file"] {
+            display: none;
+        }
+
+        .success-msg {
+            color: #28a745;
+            font-weight: bold;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>❤️ Jacaylkeyga Qalbigayga ❤️</h1>
+        <p class="subtitle">Goob gaar ah oo kaliya adiga</p>
+    </div>
+
+    <div class="image-container" id="imageContainer">
+        <!-- Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <div class="upload-icon">📸</div>
+            <div class="upload-text">
+                <h3>Geliso Sawirkaaga Halkan</h3>
+                <p>Soo jiido sawirkaaga ama dooro file-ka</p>
+            </div>
+            <button class="upload-btn" onclick="openFilePicker()">
+                🖼️ Dooro Sawirkaaga
+            </button>
+            <input type="file" id="fileInput" accept="image/*">
+            <div class="success-msg" id="successMsg">✅ Sawirka waa la geliyay!</div>
+
+            <div style="margin-top: 30px; color: #888; font-size: 0.9rem;">
+                <p><strong>Fiiro gaar ah:</strong></p>
+                <p>• Dooro sawirkaaga phone-ka ka bilaabatay</p>
+                <p>• URL-ka ma ahan lagama maarmaan</p>
+                <p>• Dabadeed guji sawirka si aad u aragto qarsoodiga</p>
+            </div>
+        </div>
+
+        <!-- Image Preview -->
+        <img id="https://www.instagram.com/p/DTNeh4jiJ90/?igsh=NnU4YWVyNXlvbmo1" alt="Sawirka jacaylkeyga">
+
+        <!-- Hidden Content (Flowers & Messages) -->
+        <div class="hidden-content" id="hiddenContent">
+            <div class="flowers-container">
+                <div class="flower" style="animation-delay: 0s; color: #ff4081;">🌸</div>
+                <div class="flower" style="animation-delay: 0.3s; color: #ff6b6b;">🌹</div>
+                <div class="flower" style="animation-delay: 0.6s; color: #ff8e53;">💐</div>
+                <div class="flower" style="animation-delay: 0.9s; color: #9c27b0;">🌺</div>
+                <div class="flower" style="animation-delay: 1.2s; color: #3f51b5;">🌷</div>
+            </div>
+            <div class="message" id="messageText">
+                Waan kuu jeclahay wax aanan ku dhicin karin!
+            </div>
+        </div>
+    </div>
+
+    <p class="instruction" id="instructionText">
+        Markaad geliso sawirka, guji si aad u aragto ubaxyo
+    </p>
+
+    <!-- Love Letter -->
+    <div class="love-letter">
+        <h2>Fariin Jacayl Oo Kuguu Qoran</h2>
+        <p>Jacaylkeyga qalbigayga,</p>
+        <p>Maalin kasta markaan ku fiiriyo, waxaan dareemaa farxad aan cabbirkiisa lahayn. Adigu tahay qofka aan u dhashay, qalbiga aan ku dhisay, nolosha aan doonayay.</p>
+        <p>Waxaan kuu abuuray website-gan yar si aan ku tustay sidii aan kuu jeclahay. Markaad sawirkaada geliso oo aad gujiso, waxaad arkeysaa ubaxyo iyo erayo macaan - sidii jacaylkeyga oo kale, had iyo jeer wuxuu u kordhayaa.</p>
+        <p style="text-align: right; font-style: italic; color: #d63384; margin-top: 30px; font-size: 1.3rem;">
+            Kuu jeclahay weligeen,<br>
+            Qalbigaaga
+        </p>
+    </div>
+
+    <script>
+        // Sweet messages in Somali
+        const sweetMessages = [
+            "Waan kuu jeclahay wax aanan ku dhicin karin! ❤️",
+            "Adigu tahay quruxda ugu wanaagsan ee aan arag!",
+            "Qalbigayga dhan waa kuu qarsoon yahay!",
+            "Waad iga qurxisaa dunidan oo dhan!",
+            "Jacaylkaaga waa weligeen iyo had iyo jeer!",
+            "Adiga ayaa noqday iftiinka noloshavda!",
+            "Ma suurayn karo inaan ku sheego sidii aan kuu jeclahay!",
+            "Waxaan kuu ahaan doonaa weligeen iyo weligeen!",
+            "Noloshavdu way ka duwan tahay markaad joogto!",
+            "Waxaan ahay mid kuugu macbudhay!",
+            "Mar walba oo aan ku arko, waan ka xishoonayaa!",
+            "Adiga ayaa noqday ujeedada noloshavda!"
+        ];
+
+        // Get DOM elements
+        const fileInput = document.getElementById('fileInput');
+        const previewImage = document.getElementById('previewImage');
+        const uploadSection = document.getElementById('uploadSection');
+        const imageContainer = document.getElementById('imageContainer');
+        const hiddenContent = document.getElementById('hiddenContent');
+        const messageText = document.getElementById('messageText');
+        const instructionText = document.getElementById('instructionText');
+        const successMsg = document.getElementById('successMsg');
+
+        let imageLoaded = false;
+
+        // Open file picker
+        function openFilePicker() {
+            fileInput.click();
+        }
+
+        // Handle file selection
+        fileInput.addEventListener('change', function(event) {
+            const file = event.target.files[0];
+
+            if (file) {
+                // Check if it's an image
+                if (!file.type.startsWith('image/')) {
+                    alert("Fadlan dooro sawir (.jpg, .png, .jpeg)");
+                    return;
+                }
+
+                // Check file size (max 5MB)
+                if (file.size > 5 * 1024 * 1024) {
+                    alert("Sawirka waa weyn yahay! Dooro sawir yar (5MB kama badna)");
+                    return;
+                }
+
+                // Create FileReader
+                const reader = new FileReader();
+
+                reader.onload = function(e) {
+                    // Set image source
+                    previewImage.src = e.target.result;
+                    previewImage.style.display = 'block';
+
+                    // Hide upload section
+                    uploadSection.style.display = 'none';
+
+                    // Show success message
+                    successMsg.style.display = 'block';
+
+                    // Update instruction
+                    instructionText.textContent = "✅ Sawirka waa la geliyay! Guji sawirka si aad u aragto ubaxyo.";
+                    instructionText.style.color = "#28a745";
+
+                    // Set flag
+                    imageLoaded = true;
+
+                    console.log("✅ Sawirka waa la geliyay!");
+                };
+
+                reader.onerror = function() {
+                    alert("Khalad ayaa dhacay! Isku day mar kale.");
+                };
+
+                // Read the file
+                reader.readAsDataURL(file);
+            }
+        });
+
+        // Show flowers when image is clicked
+        imageContainer.addEventListener('click', function(e) {
+            // Only if image is loaded and we're not clicking the upload button
+            if (imageLoaded && e.target.id !== 'fileInput') {
+                // Show hidden content
+                hiddenContent.style.display = 'flex';
+                previewImage.style.opacity = '0.3';
+
+                // Show random sweet message
+                const randomIndex = Math.floor(Math.random() * sweetMessages.length);
+                messageText.textContent = sweetMessages[randomIndex];
+
+                // Animate flowers
+                const flowers = document.querySelectorAll('.flower');
+                flowers.forEach((flower, index) => {
+                    // Reset animation
+                    flower.style.animation = 'none';
+                    void flower.offsetWidth; // Trigger reflow
+
+                    // Apply new animation with delay
+                    const delay = index * 0.3;
+                    flower.style.animation = `float 3s ease-in-out ${delay}s infinite`;
+                });
+
+                // Update instruction
+                instructionText.textContent = "Guji ubaxyada si aad u aragto sawirka mar kale";
+                instructionText.style.color = "#d63384";
+            }
+        });
+
+        // Hide flowers when clicked
+        hiddenContent.addEventListener('click', function() {
+            hiddenContent.style.display = 'none';
+            previewImage.style.opacity = '1';
+
+            // Update instruction
+            instructionText.textContent = "Guji sawirka mar kale si aad u aragto ubaxyo";
+            instructionText.style.color = "#666";
+        });
+
+        // Initial message
+        messageText.textContent = sweetMessages[0];
+
+        // Add some visual effects on load
+        window.addEventListener('load', function() {
+            console.log("Website-ka waa diyaar!");
+
+            // Add some fun emojis
+            const title = document.querySelector('h1');
+            title.innerHTML = '❤️ Jacaylkeyga Qalbigayga ❤️';
+        });
+    </script>
+</body>
+</html>
