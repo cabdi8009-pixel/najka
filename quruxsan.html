@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jacaylkeyga</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f9e4ff 0%, #e6f0ff 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            text-align: center;
+        }
+
+        header {
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            color: #6f42c1;
+            font-size: 1.4rem;
+            font-style: italic;
+        }
+
+        .image-container {
+            position: relative;
+            width: 100%;
+            max-width: 500px;
+            margin: 0 auto 30px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: transform 0.5s;
+        }
+
+        .image-container:hover {
+            transform: scale(1.02);
+        }
+
+        .main-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+            transition: opacity 0.8s ease;
+        }
+
+        .hidden-content {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
+            padding: 30px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 1s ease, visibility 1s;
+            border-radius: 20px;
+        }
+
+        .hidden-content.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .ubaxyo {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .ubax {
+            font-size: 2.5rem;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .ubax:nth-child(1) { color: #ff4081; animation-delay: 0s; }
+        .ubax:nth-child(2) { color: #ff9800; animation-delay: 0.5s; }
+        .ubax:nth-child(3) { color: #e91e63; animation-delay: 1s; }
+        .ubax:nth-child(4) { color: #9c27b0; animation-delay: 1.5s; }
+        .ubax:nth-child(5) { color: #3f51b5; animation-delay: 2s; }
+
+        .erayo-macan {
+            color: #5a189a;
+            font-size: 1.8rem;
+            line-height: 1.5;
+            margin-bottom: 20px;
+            text-align: center;
+            max-width: 80%;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1s ease 0.5s, transform 1s ease 0.5s;
+        }
+
+        .hidden-content.active .erayo-macan {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .tilmaamaha {
+            color: #6c757d;
+            font-size: 1.2rem;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .qalbi {
+            color: #ff4081;
+            animation: heartbeat 1.5s infinite;
+            display: inline-block;
+        }
+
+        footer {
+            margin-top: 30px;
+            color: #6c757d;
+            font-size: 1rem;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .fariin {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 2s ease;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .fariin h2 {
+            color: #d63384;
+            margin-bottom: 15px;
+        }
+
+        .fariin p {
+            color: #495057;
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2.2rem; }
+            .subtitle { font-size: 1.2rem; }
+            .main-image { height: 300px; }
+            .erayo-macan { font-size: 1.5rem; }
+            .ubax { font-size: 2rem; }
+        }
+
+        @media (max-width: 480px) {
+            h1 { font-size: 1.8rem; }
+            .main-image { height: 250px; }
+            .erayo-macan { font-size: 1.2rem; }
+            .ubax { font-size: 1.8rem; }
+            .fariin { padding: 15px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Jacaylkeyga Qalbigayga <span class="qalbi">❤</span></h1>
+            <p class="subtitle">Goob gaar ah oo kaliya adiga uun</p>
+        </header>
+
+        <div class="image-container" id="imageContainer">
+            <!-- HALKAN KA BEDEL SAWIRKA JACAYLKAAGA LOCAL -->
+            <img src="jacayl.jpg" alt="Sawirka jacaylka" class="main-image" id="mainImage">
+
+            <div class="hidden-content" id="hiddenContent">
+                <div class="ubaxyo" id="ubaxyoContainer">
+                    <div class="ubax">🌸</div>
+                    <div class="ubax">🌹</div>
+                    <div class="ubax">💐</div>
+                    <div class="ubax">🌺</div>
+                    <div class="ubax">🌷</div>
+                </div>
+
+                <p class="erayo-macan" id="erayoMacan">
+                    Adiga aya ah iftiinka maalintayda,<br>
+                    Codkaga kaliya ayaa qalbigayga dajiyo .<br>
+                    Dhoola cadeedkaagu waa aragtida ugu wanaagsan,<br>
+                    Dunidaad ka dhigtaa farxad iyo raynrayn.<br>
+                    Jacaylkan adiga ku qabo malahan xisaab.,<br>
+                    Malin un xalasheyda wad noqon dontaa i.a.
+
+                </p>
+            </div>
+        </div>
+
+        <p class="tilmaamaha">
+            Guji sawirka kor ku xusan si aad u aragtid lama filankaa!
+        </p>
+
+        <div class="fariin">
+            <h2>Nagteyga Aan Jclaa</h2>
+            <p>
+                Jacaylkaagu waa hoy aan ka nasto daalka nolosha.
+               Indhahaaga ayaan ku arkaa riyadayda oo rumoobaysa.
+               Adigaa ah sababta dhoolla-caddeyntaydu u dhalato subax kasta.
+                Hadaan ku dhaho kuma xiisin been ku sheegay waayo.
+            </p>
+            <p>
+               xisahaba adigaa ibaray inta aan nolahay nooleka uma
+                qaadin xiiso lamid ah midkaan adiga ku qaaday wayo waxad
+                 inoqotay feerteyda bidxeed ee iga maqneed
+            </p>
+            <p>
+                Naxariista dunida taalo adaa laguu hibeyay adna aniga igama
+                hagran waxa tahay hadiyad ilaah isoo diray marna kuma wax
+                igama hagranin malinkaan ku bartayilaa maantadan awalkaga jano i.a
+            </p>
+            <p style="text-align: right; font-style: italic; margin-top: 20px;">
+                Adiga keliya,<br>
+                <span style="color: #d63384;">jaahido wan ku jclhy</span>
+            </p>
+        </div>
+
+        <footer>
+            <p>Loo sameeyay <span class="qalbi">❤</span> qofka ugu quruxda badan aduunka</p>
+        </footer>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const imageContainer = document.getElementById('imageContainer');
+            const hiddenContent = document.getElementById('hiddenContent');
+            const mainImage = document.getElementById('mainImage');
+            const erayoMacan = document.getElementById('erayoMacan');
+            const ubaxyoContainer = document.getElementById('ubaxyoContainer');
+
+            const ubaxEmojis = ['🌸', '🌹', '💐', '🌺', '🌷', '🌻', '🥀', '💮', '🏵️'];
+
+            function helErayoKalaDuwan(arr) {
+                return arr[Math.floor(Math.random() * arr.length)];
+            }
+
+            function abuurUbaxyoKalaDuwan() {
+                ubaxyoContainer.innerHTML = '';
+                const tiradaUbaxyada = Math.floor(Math.random() * 5) + 8;
+                for (let i = 0; i < tiradaUbaxyada; i++) {
+                    const ubax = document.createElement('div');
+                    ubax.classList.add('ubax');
+                    ubax.textContent = helErayoKalaDuwan(ubaxEmojis);
+                    const duration = 2 + Math.random() * 3;
+                    const delay = Math.random() * 2;
+                    ubax.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+                    ubax.style.fontSize = `${1.5 + Math.random() * 2}rem`;
+                    ubaxyoContainer.appendChild(ubax);
+                }
+            }
+
+            imageContainer.addEventListener('click', function() {
+                hiddenContent.classList.toggle('active');
+                if (hiddenContent.classList.contains('active')) {
+                    mainImage.style.opacity = '0.3';
+                    abuurUbaxyoKalaDuwan();
+                    document.querySelector('.tilmaamaha').textContent = "Guji mar kale si aad u aragto wax  quruxda badan!";
+                } else {
+                    mainImage.style.opacity = '1';
+                    document.querySelector('.tilmaamaha').textContent = "Guji sawirka si aad u aragto lama filaan!";
+                }
+            });
+
+            abuurUbaxyoKalaDuwan();
+        });
+    </script>
+</body>
+</html>
