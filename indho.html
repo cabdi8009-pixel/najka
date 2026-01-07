@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jacaylkeyga</title>
+
+<style>
+body{
+    margin:0;
+    font-family:Segoe UI, Tahoma;
+    background:linear-gradient(135deg,#f9e4ff,#e6f0ff);
+    display:flex;
+    justify-content:center;
+    min-height:100vh;
+}
+
+.container{
+    max-width:900px;
+    text-align:center;
+    padding:20px;
+}
+
+h1{
+    color:#d63384;
+}
+
+.image-container{
+    position:relative;
+    max-width:500px;
+    margin:auto;
+    cursor:pointer;
+}
+
+.main-image{
+    width:100%;
+    height:400px;
+    object-fit:cover;
+    border-radius:20px;
+    transition:opacity .5s;
+}
+
+.hidden-content{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(45deg,#ff9a9e,#fad0c4);
+    border-radius:20px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    opacity:0;
+    transition:.8s;
+}
+
+.hidden-content.active{
+    opacity:1;
+}
+
+.ubax{
+    font-size:2rem;
+    animation:float 3s ease-in-out infinite;
+}
+
+@keyframes float{
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-15px)}
+}
+
+.erayo-macan{
+    color:#5a189a;
+    font-size:1.4rem;
+    margin-top:15px;
+}
+</style>
+</head>
+
+<body>
+<div class="container">
+
+<h1>Jacaylkeyga jaahido ❤️</h1>
+
+<div class="image-container" id="imageContainer">
+
+    <!-- ⚠️ HALKAN SAWIRKAAGA GELI -->
+    <img src="jacayl.jpg" class="main-image" id="mainImage">
+
+    <div class="hidden-content" id="hiddenContent">
+        <div>
+            <span class="ubax">🌸</span>
+            <span class="ubax">🌹</span>
+            <span class="ubax">💐</span>
+        </div>
+
+        <div class="erayo-macan" id="erayoMacan"></div>
+    </div>
+
+</div>
+
+<p id="tilmaan">Guji sawirka ❤️</p>
+
+</div>
+
+<script>
+const imageContainer=document.getElementById("imageContainer");
+const hiddenContent=document.getElementById("hiddenContent");
+const mainImage=document.getElementById("mainImage");
+const erayoMacan=document.getElementById("erayoMacan");
+const tilmaan=document.getElementById("tilmaan");
+
+const erayo=[
+ "Adiga ayaa qalbigayga leh 💕",
+ "Jacaylkaaga waa iftiinkeyga ✨",
+ "Adiga ayaan ii naag weligay ❤️",
+ "Nolosheydu adiga ayey qurux noqotay 🌹",
+ "Ma jiro mid kula mid ah 💖"
+];
+
+imageContainer.addEventListener("click",()=>{
+ hiddenContent.classList.toggle("active");
+
+ if(hiddenContent.classList.contains("active")){
+    mainImage.style.opacity="0.3";
+    erayoMacan.innerHTML=erayo[Math.floor(Math.random()*erayo.length)];
+    tilmaan.textContent="Guji mar kale si aad u xirto 💞";
+ }else{
+    mainImage.style.opacity="1";
+    tilmaan.textContent="Guji sawirka ❤️";
+ }
+});
+</script>
+
+</body>
+</html>
