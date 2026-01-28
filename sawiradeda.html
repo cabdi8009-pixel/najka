@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sucdi Gallery - 200 HD Slots</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        h1 { color: #ff4d6d; font-size: 28px; border-bottom: 2px solid #ff4d6d; padding-bottom: 10px; }
+
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .photo-item {
+            background: #fff;
+            padding: 15px;
+            border-radius: 15px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .photo-card {
+            background: #000;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 450px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            image-rendering: -webkit-optimize-contrast;
+        }
+
+        .download-btn {
+            display: block;
+            margin-top: 15px;
+            background: #ff4d6d;
+            color: white;
+            padding: 12px;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+
+        .slot-number {
+            font-size: 12px;
+            color: #888;
+            margin-bottom: 5px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📸 WELCOME NAJKA,S PHOTOS</h1>
+    <p>MIDKAAD DOONTO KALADAG</p>
+
+    <div id="gallery">
+        <!-- Xabagga sawirrada waxaa halkan ku sameyn doona JavaScript -->
+    </div>
+</div>
+
+<script>
+    // Liiska linkiga sawirrada ee aad rabto inaad isticmaasho
+    // Halkan waxaad geli kartaa 200 link oo kala duwan
+    const imageLinks = [    "https://i.ibb.co/fYWf0FD9/IMG-4523.jpg"
+ "https://i.ibb.co/0VZkBnjD/IMG-4522.jpg",
+ "https://i.ibb.co/Wvvbx6sP/IMG-4521-1.jpg" ,
+ "https://i.ibb.co/svFLbjR4/IMG-20220806-WA0114.jpg",
+ "https://i.ibb.co/RGGSwZfQ/IMG-4293.jpg"            ,
+ "https://i.ibb.co/mV6RP00M/IMG-4236-1.jpg"           ,
+ "https://i.ibb.co/WNbcccdt/IMG-9330.jpg"              ,
+ "https://i.ibb.co/50SBPZj/IMG-9329.jpg"                ,
+ "https://i.ibb.co/wryT7p25/IMG-9439.jpg"                ,
+ "https://i.ibb.co/Jjb81mwM/IMG-6139.jpg"                 ,
+ "https://i.ibb.co/N2wt1H2Z/IMG-9331.jpg"                  ,
+ "https://i.ibb.co/8gfgWJ65/IMG-0433.jpg"                   ,
+ "https://i.ibb.co/4wt6NzQh/IMG-0432.jpg"                    ,
+ "https://i.ibb.co/TXPhMXc/IMG-9553.jpg"                      ,
+"https://i.ibb.co/bMPpq7XY/IMG-9552.jpg"                       ,
+ "https://i.ibb.co/GQ2m8PWw/IMG-9537.jpg"                       ,
+ "https://i.ibb.co/xSBqmykm/IMG-9536.jpg"                        ,
+ "https://i.ibb.co/SXMmSZHP/IMG-9535.jpg"                         ,
+ "https://i.ibb.co/8kLRhr2/IMG-9532.jpg"                           ,
+ "https://i.ibb.co/v40YjPHM/IMG-9434.jpg"                           ,
+ "https://i.ibb.co/C5Zn1M0X/IMG-9433.jpg"                            ,
+"https://i.ibb.co/c566p9g/IMG-9545-1.jpg"                             ,
+ "https://i.ibb.co/WwZ32RG/IMG-9436-1.jpg"                             ,
+"https://i.ibb.co/8CRzw6d/IMG-20220806-WA0074.jpg"                      ,
+ "https://i.ibb.co/rGrwNPVM/IMG-20220806-WA0081.jpg"                     ,
+ "https://i.ibb.co/S7wQbR0r/IMG-20220805-WA0181.jpg"                      ,
+"https://i.ibb.co/WN9x2Yf7/IMG-20220805-WA0188.jpg"                        ,
+"https://i.ibb.co/SDZqrNcq/IMG-4314-2.jpg"                                  ,
+ "https://i.ibb.co/TBknLp64/IMG-4316-2.jpg"                                  ,
+ "https://i.ibb.co/4wNp3Qyr/IMG-4339-2.jpg"                                   ,
+"https://i.ibb.co/CGmjpBy/IMG-4347-2.jpg"                                      ,
+ "https://i.ibb.co/yBbLMnKN/IMG-4348-2.jpg"                                     ,
+ "https://i.ibb.co/gZqGJQSP/IMG-4349.jpg"                                        ,
+ "https://i.ibb.co/TqWzJS9p/IMG-20221109-WA0007.jpg"                              ,
+ "https://i.ibb.co/hxzmx4wV/IMG-9889.jpg"                                          ,
+ "https://i.ibb.co/TBtWZZfc/IMG-20250627-WA0061.jpg"                                ,
+ "https://i.ibb.co/ccVhmW05/Screenshot-20210725-002609-Gallery.jpg"                  ,
+ "https://i.ibb.co/rfwB2rL7/Screenshot-20240926-154312-Whats-App-Business.jpg"        ,
+"https://i.ibb.co/QFjVJKqw/IMG-20250422-WA0028.jpg"                                    ,
+ "https://i.ibb.co/hxk9WpHR/IMG-20250630-WA0047.jpg"                                    ,
+ "https://i.ibb.co/gbdVMc2k/IMG-20230111-WA0019.jpg"                                     ,
+ "https://i.ibb.co/V7vfZXm/IMG-20250630-WA0043.jpg"                                       ,
+ "https://i.ibb.co/YFdhrRf5/IMG-20250422-WA0116.jpg"                                       ,
+ "https://i.ibb.co/C5BPKJtP/IMG-20250422-WA0021.jpg"                                        ,
+ "https://i.ibb.co/HLMpWZQZ/IMG-20250630-WA0048.jpg"                                         ,
+ "https://i.ibb.co/27JRFQ7S/IMG-20250422-WA0109.jpg"                                          ,
+ "https://i.ibb.co/NkhLRVq/Screenshot-20220612-195858-Video-Player.jpg"                        ,
+ "https://i.ibb.co/LKTFnVg/IMG-9897.jpg"                                                        ,
+ "https://i.ibb.co/gLXNjZNn/IMG-9891.jpg"                                                        ,
+ "https://i.ibb.co/YT4DmQgJ/IMG-9895.jpg"                                                         ,
+ "https://i.ibb.co/dwq789wf/IMG-20250630-WA0044.jpg"                                               ,
+ "https://i.ibb.co/BVw0Sc1g/IMG-20250422-WA0115.jpg"                                                ,
+"https://i.ibb.co/mCpX2BsB/IMG-20250627-WA0069.jpg"                                                  ,
+ "https://i.ibb.co/Xrgzdc9d/IMG-20250422-WA0031.jpg"                                                  ,
+ "https://i.ibb.co/wDBnwCM/IMG-20250630-WA0050.jpg"                                                    ,
+ "https://i.ibb.co/YFfbSxDY/IMG-20250627-WA0053.jpg"                                                    ,
+ "https://i.ibb.co/nNsJPH5d/IMG-20250627-WA0073.jpg"                                                     ,
+ "https://i.ibb.co/7dfBM8PX/download.jpg"                                                                 ,
+ "https://i.ibb.co/VYByvw7w/IMG-20251010-WA0021.jpg"                                                       ,
+ "https://i.ibb.co/pBVpyBN9/IMG-20251010-WA0023.jpg"                                                        ,
+ "https://i.ibb.co/FknXH1HV/IMG-20251010-WA0017.jpg"                                                         ,
+ "https://i.ibb.co/G4BFLYbH/IMG-20251010-WA0011.jpg"                                                          ,
+ "https://i.ibb.co/RTSdqDX4/IMG-20251010-WA0009.jpg"                                                           ,
+ "https://i.ibb.co/RpBVfcnT/IMG-20250513-WA0044.jpg"                                                            ,
+ "https://i.ibb.co/ynYjX4wy/IMG-4318-2.jpg"                                                                      ,
+ "https://i.ibb.co/27Fb38zb/IMG-20241108-WA0026.jpg"                                                              ,
+ "https://i.ibb.co/bj1sS94W/IMG-20241108-WA0024.jpg"                                                               ,
+ "https://i.ibb.co/XkYrpK5H/IMG-20241108-WA0022.jpg"                                                                ,
+ "https://i.ibb.co/7J1z0DG4/IMG-20241108-WA0020.jpg"                                                                 ,
+ "https://i.ibb.co/whPKcVQW/IMG-20241108-WA0018.jpg"                                                                  ,
+ "https://i.ibb.co/nqQPPMmd/IMG-20241108-WA0016.jpg"                                                                   ,
+ "https://i.ibb.co/JR349bxr/IMG-20241102-WA0010.jpg"                                                                  ,
+        // Ku dar linkiyada kale halkan ilaa 200
+    ];
+
+    const gallery = document.getElementById('gallery');
+
+    // Haddii aanad 200 link ah haysan, waxaan ku sameyn doonaa kuwo kale
+    // oo isku mid ah si aad u hesho 200 xabo
+    const totalSlots = 200;
+
+    for (let i = 0; i < totalSlots; i++) {
+        // Haddii link ku jiro liiska, isticmaal linkiga
+        // Haddii kale, isticmaal linkiga ugu dambeeya ee liiska
+        const imageIndex = i < imageLinks.length ? i : imageLinks.length - 1;
+        const imageUrl = imageLinks[imageIndex];
+
+        // Samee xabo sawir cusub
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item';
+
+        photoItem.innerHTML = `
+            <span class="slot-number">Sawirka #${i + 1}</span>
+            <div class="photo-card">
+                <img src="${imageUrl}" alt="Sawirka Sucdi ${i + 1}">
+            </div>
+            <a href="${imageUrl}" download class="download-btn">⬇️ Soo Dejiso HD</a>
+        `;
+
+        gallery.appendChild(photoItem);
+    }
+
+    // Fiiro gaar ah: Haddii aad rabto inaad 200 link oo kala duwan haysato,
+    // waxaad u baahan tahay inaad buuxiso liiska 'imageLinks' 200 link oo kala duwan
+    // Haddii aad haysato 3 link oo keliya, 200-ka xabood waxay isku marayaan 3-taa sawir
+</script>
+
+</body>
+</html>
