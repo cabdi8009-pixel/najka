@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Najka Gallery - 2K Ultra HD</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0b0b0d; /* Midab madow oo raaxo leh */
+            color: #fff;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 1400px;
+            margin: auto;
+            background: #16161a;
+            padding: 30px;
+            border-radius: 30px;
+            box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+        }
+        h1 {
+            color: #ff4d6d;
+            font-size: 35px;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 77, 109, 0.4);
+            margin-bottom: 5px;
+        }
+
+        .contact-info {
+            background: rgba(255, 77, 109, 0.1);
+            padding: 20px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            border: 1px solid #ff4d6d;
+            display: inline-block;
+        }
+        .contact-info p {
+            margin: 5px 0;
+            font-weight: 600;
+            color: #eee;
+            font-size: 17px;
+        }
+        .contact-info span { color: #ff4d6d; }
+
+        #gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .photo-item {
+            background: #1f1f23;
+            padding: 10px;
+            border-radius: 20px;
+            border: 1px solid #333;
+            transition: transform 0.3s ease;
+        }
+        .photo-item:hover {
+            transform: scale(1.02);
+            border-color: #ff4d6d;
+        }
+
+        .photo-card {
+            background: #000;
+            border-radius: 15px;
+            overflow: hidden;
+            /* Fireemka halkan ayaa lagu hagaajiyey */
+            width: 100%;
+            aspect-ratio: 3 / 4.5;
+            display: flex;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Wuxuu buuxinayaa fireemka oo dhan */
+
+            /* TAYADA 2K/ULTRA HD */
+            image-rendering: -webkit-optimize-contrast;
+            filter: contrast(1.05) brightness(1.02) saturate(1.1);
+        }
+
+        .download-btn {
+            display: block;
+            margin-top: 15px;
+            background: linear-gradient(45deg, #ff4d6d, #ff758c);
+            color: white;
+            padding: 14px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+        .download-btn:hover {
+            box-shadow: 0 0 20px rgba(255, 77, 109, 0.6);
+        }
+
+        .slot-number {
+            font-size: 12px;
+            color: #777;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>📸 NAJKA PREMIUM GALLERY</h1>
+
+    <div class="contact-info">
+        <p>📞 Tel: <span>612421214 / 610808483</span></p>
+        <p>📧 Email: <span>Cabdi8009@gmail.com</span></p>
+    </div>
+
+    <p style="color: #aaa;">TAYADA: <b style="color:#25d366">2K ULTRA HD</b> | DHAMAAN SAWRADA WAA FULL FRAME</p>
+
+    <div id="gallery"></div>
+</div>
+
+<script>
+    const imageLinks = [
+        "https://i.ibb.co/fYWf0FD9/IMG-4523.jpg",
+        "https://i.ibb.co/0VZkBnjD/IMG-4522.jpg",
+        "https://i.ibb.co/Wvvbx6sP/IMG-4521-1.jpg",
+        "https://i.ibb.co/svFLbjR4/IMG-20220806-WA0114.jpg",
+        "https://i.ibb.co/RGGSwZfQ/IMG-4293.jpg",
+        "https://i.ibb.co/mV6RP00M/IMG-4236-1.jpg",
+        "https://i.ibb.co/WNbcccdt/IMG-9330.jpg",
+        "https://i.ibb.co/50SBPZj/IMG-9329.jpg",
+        "https://i.ibb.co/wryT7p25/IMG-9439.jpg",
+        "https://i.ibb.co/Jjb81mwM/IMG-6139.jpg",
+        "https://i.ibb.co/N2wt1H2Z/IMG-9331.jpg",
+        "https://i.ibb.co/8gfgWJ65/IMG-0433.jpg",
+        "https://i.ibb.co/4wt6NzQh/IMG-0432.jpg",
+        "https://i.ibb.co/TXPhMXc/IMG-9553.jpg",
+        "https://i.ibb.co/bMPpq7XY/IMG-9552.jpg",
+        "https://i.ibb.co/GQ2m8PWw/IMG-9537.jpg",
+        "https://i.ibb.co/xSBqmykm/IMG-9536.jpg",
+        "https://i.ibb.co/SXMmSZHP/IMG-9535.jpg",
+        "https://i.ibb.co/8kLRhr2/IMG-9532.jpg",
+        "https://i.ibb.co/v40YjPHM/IMG-9434.jpg",
+        "https://i.ibb.co/C5Zn1M0X/IMG-9433.jpg",
+        "https://i.ibb.co/c566p9g/IMG-9545-1.jpg",
+        "https://i.ibb.co/WwZ32RG/IMG-9436-1.jpg",
+        "https://i.ibb.co/8CRzw6d/IMG-20220806-WA0074.jpg",
+        "https://i.ibb.co/rGrwNPVM/IMG-20220806-WA0081.jpg",
+        "https://i.ibb.co/S7wQbR0r/IMG-20220805-WA0181.jpg",
+        "https://i.ibb.co/WN9x2Yf7/IMG-20220805-WA0188.jpg",
+        "https://i.ibb.co/SDZqrNcq/IMG-4314-2.jpg",
+        "https://i.ibb.co/TBknLp64/IMG-4316-2.jpg",
+        "https://i.ibb.co/4wNp3Qyr/IMG-4339-2.jpg",
+        "https://i.ibb.co/CGmjpBy/IMG-4347-2.jpg",
+        "https://i.ibb.co/yBbLMnKN/IMG-4348-2.jpg",
+        "https://i.ibb.co/gZqGJQSP/IMG-4349.jpg",
+        "https://i.ibb.co/TqWzJS9p/IMG-20221109-WA0007.jpg",
+        "https://i.ibb.co/hxzmx4wV/IMG-9889.jpg",
+        "https://i.ibb.co/TBtWZZfc/IMG-20250627-WA0061.jpg",
+        "https://i.ibb.co/ccVhmW05/Screenshot-20210725-002609-Gallery.jpg",
+        "https://i.ibb.co/rfwB2rL7/Screenshot-20240926-154312-Whats-App-Business.jpg",
+        "https://i.ibb.co/QFjVJKqw/IMG-20250422-WA0028.jpg",
+        "https://i.ibb.co/hxk9WpHR/IMG-20250630-WA0047.jpg",
+        "https://i.ibb.co/gbdVMc2k/IMG-20230111-WA0019.jpg",
+        "https://i.ibb.co/V7vfZXm/IMG-20250630-WA0043.jpg",
+        "https://i.ibb.co/YFdhrRf5/IMG-20250422-WA0116.jpg",
+        "https://i.ibb.co/C5BPKJtP/IMG-20250422-WA0021.jpg",
+        "https://i.ibb.co/HLMpWZQZ/IMG-20250630-WA0048.jpg",
+        "https://i.ibb.co/27JRFQ7S/IMG-20250422-WA0109.jpg",
+        "https://i.ibb.co/NkhLRVq/Screenshot-20220612-195858-Video-Player.jpg",
+        "https://i.ibb.co/LKTFnVg/IMG-9897.jpg",
+        "https://i.ibb.co/gLXNjZNn/IMG-9891.jpg",
+        "https://i.ibb.co/YT4DmQgJ/IMG-9895.jpg",
+        "https://i.ibb.co/dwq789wf/IMG-20250630-WA0044.jpg",
+        "https://i.ibb.co/BVw0Sc1g/IMG-20250422-WA0115.jpg",
+        "https://i.ibb.co/mCpX2BsB/IMG-20250627-WA0069.jpg",
+        "https://i.ibb.co/Xrgzdc9d/IMG-20250422-WA0031.jpg",
+        "https://i.ibb.co/wDBnwCM/IMG-20250630-WA0050.jpg",
+        "https://i.ibb.co/YFfbSxDY/IMG-20250627-WA0053.jpg",
+        "https://i.ibb.co/nNsJPH5d/IMG-20250627-WA0073.jpg",
+        "https://i.ibb.co/7dfBM8PX/download.jpg",
+        "https://i.ibb.co/VYByvw7w/IMG-20251010-WA0021.jpg",
+        "https://i.ibb.co/pBVpyBN9/IMG-20251010-WA0023.jpg",
+        "https://i.ibb.co/FknXH1HV/IMG-20251010-WA0017.jpg",
+        "https://i.ibb.co/G4BFLYbH/IMG-20251010-WA0011.jpg",
+        "https://i.ibb.co/RTSdqDX4/IMG-20251010-WA0009.jpg",
+        "https://i.ibb.co/RpBVfcnT/IMG-20250513-WA0044.jpg",
+        "https://i.ibb.co/ynYjX4wy/IMG-4318-2.jpg",
+        "https://i.ibb.co/27Fb38zb/IMG-20241108-WA0026.jpg",
+        "https://i.ibb.co/bj1sS94W/IMG-20241108-WA0024.jpg",
+        "https://i.ibb.co/XkYrpK5H/IMG-20241108-WA0022.jpg",
+        "https://i.ibb.co/7J1z0DG4/IMG-20241108-WA0020.jpg",
+        "https://i.ibb.co/whPKcVQW/IMG-20241108-WA0018.jpg",
+        "https://i.ibb.co/nqQPPMmd/IMG-20241108-WA0016.jpg",
+        "https://i.ibb.co/JR349bxr/IMG-20241102-WA0010.jpg"
+    ];
+
+    const gallery = document.getElementById('gallery');
+    const totalSlots = 200;
+
+    for (let i = 0; i < totalSlots; i++) {
+        const imageIndex = i < imageLinks.length ? i : imageLinks.length - 1;
+        const imageUrl = imageLinks[imageIndex];
+
+        const photoItem = document.createElement('div');
+        photoItem.className = 'photo-item';
+
+        photoItem.innerHTML = `
+            <span class="slot-number">PREMIUM SLOT #${i + 1}</span>
+            <div class="photo-card">
+                <img src="${imageUrl}" alt="Najka 2K Photo" loading="lazy">
+            </div>
+            <a href="${imageUrl}" target="_blank" class="download-btn">⬇️ DOWNLOAD 2K HD</a>
+        `;
+
+        gallery.appendChild(photoItem);
+    }
+</script>
+
+</body>
+</html>
