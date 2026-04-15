@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://fonts.googleapis.com/css2?family=Aquafina+Script&family=Inter:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; height: 100vh; font-family: 'Inter', sans-serif; }
+
+        /* --- Xiddigaha Gadaasha --- */
+        #star-field {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.5;
+            animation: twinkle var(--duration) infinite ease-in-out;
+        }
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        /* 1. Loading Screen */
+        #loader-container {
+            position: fixed;
+            width: 100%; height: 100%;
+            background: radial-gradient(circle at center, #2b0a1a 0%, #000 100%);
+            display: flex; justify-content: center; align-items: center;
+            z-index: 1000; transition: opacity 1s ease;
+        }
+        .loading-box {
+            background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px);
+            padding: 30px; border-radius: 20px; text-align: center; width: 320px;
+        }
+        .loading-text { color: #fff; margin-bottom: 15px; font-size: 16px; }
+        .progress-bar { width: 100%; height: 8px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; overflow: hidden; }
+        .progress-fill {
+            width: 0%; height: 100%; background: #ff1493; box-shadow: 0 0 15px #ff1493;
+            animation: fillProgress 3s forwards ease-in-out;
+        }
+        @keyframes fillProgress { 0% { width: 0%; } 100% { width: 100%; } }
+
+        /* 2. Main Scene */
+        #mainScene {
+            display: none; position: relative; width: 100vw; height: 100vh;
+            perspective: 1200px; transform-style: preserve-3d;
+        }
+
+        /* Qoraalka AYNI */
+        .ayni-text {
+            position: absolute; 
+            color: #ff69b4; 
+            font-family: 'Aquafina Script', cursive; 
+            white-space: nowrap; opacity: 0;
+            /* Iftiinka qoraalka waa la kordhiyey */
+            text-shadow: 0 0 15px #ff69b4, 0 0 30px #ff1493, 0 0 45px #ff1493;
+            animation: move3D forwards linear;
+        }
+        .small-text { font-size: 26px !important; opacity: 0.6 !important; z-index: 1; }
+        .big-text { font-size: 75px !important; z-index: 5; }
+
+        .photo-33d {
+            position: absolute; 
+            width: 120px; /* Cabirka sawirka xoogaa waa la kordhiyey */
+            height: auto;
+            border: 2px solid rgba(255, 255, 255, 0.7); 
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 20, 147, 0.5);
+            opacity: 0; z-index: 10; 
+            animation: move3D forwards linear;
+        }
+
+        .heart {
+            position: absolute; font-size: 30px; color: #ff0000;
+            filter: drop-shadow(0 0 15px #ff0000); animation: move3D forwards linear;
+        }
+
+        @keyframes move3D {
+            0% { transform: translateZ(-2000px) translateY(-200px); opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { transform: translateZ(1000px) translateY(500px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="star-field"></div>
+
+    <div id="loader-container">
+        <div class="loading-box">
+            <div class="loading-text">Scan love for Ayni... 💖<br>Authenticating...</div>
+            <div class="progress-bar"><div class="progress-fill"></div></div>
+        </div>
+    </div>
+
+    <div id="mainScene"></div>
+
+    <script>
+        const loader = document.getElementById('loader-container');
+        const mainScene = document.getElementById('mainScene');
+        const starField = document.getElementById('star-field');
+
+        // Stars generator
+        for (let i = 0; i < 200; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            const size = Math.random() * 3 + 'px';
+            star.style.width = size;
+            star.style.height = size;
+            star.style.top = Math.random() * 100 + '%';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.setProperty('--duration', (Math.random() * 3 + 2) + 's');
+            starField.appendChild(star);
+        }
+
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+                mainScene.style.display = 'block';
+                startAnimation();
+            }, 1000);
+        }, 3000);
+
+        // LINKIYADA CUSUB EE AAD SOO DIRTAY WAA KUWAN:
+        const images = [
+            "https://i.ibb.co/cXMf52LK/ef047ba8-2157-4913-9c8a-a7eb66ec63df.jpg",
+            "https://i.ibb.co/Ps8Hhkrs/b22ff2d5-51f8-45f9-88c5-f9e055fa8471.jpg",
+            "https://i.ibb.co/7NQPJj6W/4053200e-6fc3-4131-b793-b0082f2ed25f.jpg"
+        ];
+
+        function startAnimation() {
+            // Xawaaraha soo bixitaanka qoraalka (waa la kordhiyey tirada)
+            setInterval(() => {
+                // Qoraallada yaryar (10 xabbadood mar kasta)
+                for (let i = 0; i < 10; i++) {
+                    const small = document.createElement('div');
+                    small.className = 'ayni-text small-text';
+                    small.innerHTML = "Ayni ♡";
+                    small.style.left = (Math.random() * 120 - 10) + '%';
+                    small.style.top = Math.random() * 100 + '%';
+                    small.style.animationDuration = (Math.random() * 4 + 4) + 's';
+                    mainScene.appendChild(small);
+                    setTimeout(() => small.remove(), 8000);
+                }
+
+                // Qoraalka weyn (3 xabbadood mar kasta)
+                for (let j = 0; j < 3; j++) {
+                    const big = document.createElement('div');
+                    big.className = 'ayni-text big-text';
+                    big.innerHTML = "Ayni";
+                    big.style.left = Math.random() * 80 + '%';
+                    big.style.top = Math.random() * 80 + '%';
+                    big.style.animationDuration = (Math.random() * 3 + 3) + 's';
+                    mainScene.appendChild(big);
+                    setTimeout(() => big.remove(), 6000);
+                }
+
+                // Qalbi badan (❤️ iyo 💖)
+                if(Math.random() > 0.3) {
+                    for(let h_count=0; h_count<2; h_count++) {
+                        const h = document.createElement('div');
+                        h.className = 'heart';
+                        h.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
+                        h.style.left = Math.random() * 100 + '%';
+                        h.style.top = Math.random() * 100 + '%';
+                        h.style.animationDuration = (Math.random() * 2 + 3) + 's';
+                        mainScene.appendChild(h);
+                        setTimeout(() => h.remove(), 5000);
+                    }
+                }
+
+                // Sawirrada cusub (mar kasta oo wareeggu dhaco waa la tijaabshaa)
+                if(Math.random() > 0.7) {
+                    const img = document.createElement('img');
+                    img.className = 'photo-33d';
+                    img.src = images[Math.floor(Math.random() * images.length)];
+                    img.style.left = Math.random() * 80 + '%';
+                    img.style.top = Math.random() * 70 + '%';
+                    img.style.animationDuration = (Math.random() * 3 + 5) + 's';
+                    mainScene.appendChild(img);
+                    setTimeout(() => img.remove(), 8000);
+                }
+            }, 300); // Qoraalku wuxuu soo baxayaa 300ms kasta
+        }
+    </script>
+</body>
+</html>
