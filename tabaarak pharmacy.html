@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="so">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabaarak Pharmacy & Laboratory</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --cream: #F5F0E8; --deep-teal: #0D4A4A; --teal: #1A6B6B;
+            --gold: #C8A96E; --gold-light: #E2C99A; --charcoal: #1C1C1C;
+            --mid-gray: #6B7280; --white: #FFFFFF;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--charcoal); overflow-x: hidden; }
+
+        /* ── NAV ── */
+        nav {
+            position: fixed; top: 0; width: 100%; z-index: 100;
+            background: rgba(13,74,74,0.97); backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(200,169,110,0.3);
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5vw; height: 68px;
+        }
+        .nav-logo { font-family: 'Cormorant Garamond', serif; color: var(--gold); font-size: 1.1rem; font-weight: 600; line-height: 1.2; }
+        .nav-logo span { color: var(--white); font-weight: 400; font-style: italic; }
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { color: rgba(255,255,255,0.8); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; }
+        .nav-cta { background: var(--gold); color: var(--deep-teal); border: none; padding: 0.6rem 1.2rem; cursor: pointer; font-weight: 600; text-transform: uppercase; font-size: 0.75rem; }
+
+        /* ── HERO ── */
+        .hero { min-height: 100vh; background: var(--deep-teal); display: grid; grid-template-columns: 1fr 1fr; align-items: center; padding: 100px 5vw 60px; position: relative; }
+        .hero-text { position: relative; z-index: 2; }
+        .hero h1 { font-family: 'Cormorant Garamond', serif; color: var(--white); font-size: clamp(2.5rem, 5vw, 4rem); line-height: 1.1; margin-bottom: 1.5rem; }
+        .hero h1 em { color: var(--gold); font-style: italic; }
+        .hero-desc { color: rgba(255,255,255,0.7); font-size: 1.1rem; margin-bottom: 2.5rem; max-width: 450px; line-height: 1.6; }
+        .btn-primary { background: var(--gold); color: var(--deep-teal); padding: 1rem 2.5rem; text-decoration: none; display: inline-block; font-weight: 600; transition: 0.3s; }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+
+        .doctor-card { background: rgba(255,255,255,0.05); border: 1px solid var(--gold); width: 100%; max-width: 380px; margin-left: auto; }
+        .doctor-img { width: 100%; aspect-ratio: 3/4; object-fit: cover; display: block; }
+        .doctor-card-info { padding: 1.5rem; background: rgba(13,74,74,0.8); border-top: 1px solid var(--gold); }
+        .doctor-card-info h3 { color: var(--white); font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; }
+        .doctor-card-info p { color: var(--gold); font-size: 0.85rem; letter-spacing: 1px; }
+
+        /* ── SERVICES ── */
+        .section { padding: 100px 5vw; }
+        .section-tag { color: var(--gold); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 2px; margin-bottom: 1rem; display: block; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: 3rem; margin-bottom: 3.5rem; color: var(--deep-teal); }
+        .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+        .service-card { background: var(--white); padding: 3rem 2rem; border: 1px solid var(--light-border); transition: 0.4s; position: relative; }
+        .service-card:hover { background: var(--deep-teal); transform: translateY(-10px); }
+        .service-card:hover * { color: var(--white); }
+        .service-num { color: var(--gold); font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 1.5rem; display: block; }
+
+        /* ── GALLERY (COORDINATED) ── */
+        .gallery-section { background: var(--charcoal); padding: 100px 5vw; }
+        .gallery-section .section-title { color: var(--white); }
+        .gallery-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; grid-template-rows: 250px 250px; gap: 10px; }
+        .gallery-item { position: relative; overflow: hidden; border: 1px solid rgba(200,169,110,0.2); }
+        .gallery-item:first-child { grid-row: 1 / 3; }
+        .gallery-img { width: 100%; height: 100%; object-fit: cover; transition: 0.6s ease; }
+        .gallery-item:hover .gallery-img { transform: scale(1.1); }
+        .gallery-label { position: absolute; bottom: 0; left: 0; width: 100%; background: linear-gradient(transparent, rgba(0,0,0,0.9)); color: var(--white); padding: 30px 15px 15px; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 500; border-left: 3px solid var(--gold); }
+
+        /* ── BOOKING ── */
+        .booking-section { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--gold); }
+        .booking-info { background: var(--deep-teal); padding: 80px 5vw; color: var(--white); }
+        .booking-form-wrap { background: var(--white); padding: 80px 5vw; }
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label { display: block; font-size: 0.75rem; color: var(--mid-gray); margin-bottom: 0.5rem; text-transform: uppercase; font-weight: 600; }
+        .form-group input, .form-group select, .form-group textarea { width: 100%; padding: 1rem; border: 1px solid #ddd; background: var(--cream); font-family: inherit; }
+        .btn-submit { width: 100%; padding: 1.2rem; background: var(--deep-teal); color: var(--white); border: none; cursor: pointer; text-transform: uppercase; font-weight: 600; letter-spacing: 1px; transition: 0.3s; }
+        .btn-submit:hover { background: var(--gold); color: var(--deep-teal); }
+
+        footer { background: var(--charcoal); padding: 50px 5vw; color: rgba(255,255,255,0.4); text-align: center; border-top: 1px solid rgba(255,255,255,0.1); }
+
+        @media (max-width: 900px) {
+            .hero, .booking-section { grid-template-columns: 1fr; }
+            .services-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr; grid-template-rows: auto; }
+            .gallery-item { height: 300px; }
+            .doctor-card { margin: 40px auto 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="nav-logo">Tabaarak<br><span>Pharmacy & Laboratory</span></div>
+        <ul class="nav-links">
+            <li><a href="#services">Adeegyada</a></li>
+            <li><a href="#gallery">Sawirrada</a></li>
+            <li><a href="#booking">Xiriirka</a></li>
+        </ul>
+        <button class="nav-cta" onclick="document.getElementById('booking').scrollIntoView()">Ballan Qabso</button>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-text">
+            <span class="section-tag" style="color: var(--gold);">Kusoo dhowaada Tabaarak</span>
+            <h1>Caafimaadkaaga,<br><em>Ayaa Noo Muhiim Ah</em></h1>
+            <p class="hero-desc">Waxaan bixinaa adeegyo caafimaad oo tayo sare leh, laga bilaabo daawooyinka la isku halleyn karo ilaa shaybaarka casriga ah.</p>
+            <a href="#booking" class="btn-primary">Ballan Qabso Hadda</a>
+        </div>
+        <div class="hero-image-wrap">
+            <div class="doctor-card">
+                <img src="https://i.ibb.co/fdxLfRSH/2198895c-00af-4cf3-a7b9-018f73c64c32.jpg" alt="Doctor" class="doctor-img">
+                <div class="doctor-card-info">
+                    <h3>Dr. Ahmed</h3>
+                    <p>Maamulaha Guud ee Tabaarak</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="services">
+        <span class="section-tag">Maxaan qabannaa?</span>
+        <h2 class="section-title">Adeegyada aan bixino</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <span class="service-num">01.</span>
+                <h3>Farmashiye</h3>
+                <p>Helidda daawooyin tayo leh oo laga soo iibiyay shirkado caalami ah.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-num">02.</span>
+                <h3>Shaybaar</h3>
+                <p>Baaritaanno dhiigga, kaadida iyo dhammaan baahiyaha shaybaarka.</p>
+            </div>
+            <div class="service-card">
+                <span class="service-num">03.</span>
+                <h3>La-tashi</h3>
+                <p>La kulan dhakhaatiir xirfad leh si aad u hesho talooyin caafimaad.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery-section" id="gallery">
+        <span class="section-tag" style="color:var(--gold)">Socodka Xarunta</span>
+        <h2 class="section-title">Gudaha Tabaarak</h2>
+        <div class="gallery-grid">
+
+            <!-- 1. FARMASHIYAHA (Big Main Image) -->
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/3YBxrYqX/image.jpg" class="gallery-img">
+                <div class="gallery-label">Farmashiyaha Guud</div>
+            </div>
+
+            <!-- 2. SOO DHOWEYNTA (Sawirka Dadka jooga Reception-ka) -->
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/YBkgvzts/image.jpg" class="gallery-img">
+                <div class="gallery-label">Soo Dhoweynta (Reception)</div>
+            </div>
+
+            <!-- 3. SHAYBAARKA (Sawirka Mikroskoobka iyo Qalabka) -->
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/PGPXwJnL/image.jpg" class="gallery-img">
+                <div class="gallery-label">Shaybaarka Casriga ah</div>
+            </div>
+
+            <!-- 4. QOLKA LA-TASHIGA (Sawirka Dhakhtarka iyo Bukaanka) -->
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/nMb9g7yH/image.jpg" class="gallery-img">
+                <div class="gallery-label">Qolka La-tashiga</div>
+            </div>
+
+            <!-- 5. DAWO-BIXINTA (Sawirka Sanduuqa Daawada) -->
+            <div class="gallery-item">
+                <img src="https://i.ibb.co/SwXGScnX/image.jpg" class="gallery-img">
+                <div class="gallery-label">Qaybta Dawo-bixinta</div>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="booking-section" id="booking">
+        <div class="booking-info">
+            <h2 class="section-title" style="color: white; margin-bottom: 20px;">Ballan Qabso</h2>
+            <p style="margin-bottom: 30px;">Fadlan buuxi foomka si aad u xajisato wakhtigaaga.</p>
+            <p><strong>Email:</strong> barakaadpharmacy@gmail.com</p>
+            <p><strong>Tel:</strong> +252 615 351 951</p>
+        </div>
+        <div class="booking-form-wrap">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label>Magaca Buuxa</label>
+                    <input type="text" placeholder="Gali magacaaga" required>
+                </div>
+                <div class="form-group">
+                    <label>Taleefonka</label>
+                    <input type="tel" placeholder="+252 6xx xxxxxxx" required>
+                </div>
+                <div class="form-group">
+                    <label>Adeegga</label>
+                    <select>
+                        <option>Farmashiye</option>
+                        <option>Shaybaar</option>
+                        <option>La-tashi Caafimaad</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-submit">Dir Codsiga Ballanta</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>©️ 2026 Tabaarak Pharmacy & Laboratory · Muqdisho, Somalia</p>
+        <p style="font-size: 0.7rem; margin-top: 10px;">Dhammaan xuquuqda waa dhowran tahay.</p>
+    </footer>
+
+</body>
+</html>
