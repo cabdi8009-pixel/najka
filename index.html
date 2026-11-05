@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Balguri Hospital</title>
+<!-- Isku xidhka CSS-ka -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<section id="login">
+ <div class="loginbox">
+  <h1>🏥 BALGURI HOSPITAL</h1>
+  <p style="text-align:center;color:#718096" data-i="loginSubtitle">Hospital Management System</p>
+  <div style="display:flex;justify-content:flex-end">
+   <button class="lang" onclick="toggleLang()" id="loginLang">Af-Soomaali</button>
+  </div>
+  <form id="loginForm">
+   <label data-i="username">Username</label>
+   <input id="username" required autocomplete="username">
+   <label data-i="password">Password</label>
+   <input id="password" type="password" required autocomplete="current-password">
+   <button class="primary" type="submit" data-i="login">Login</button>
+  </form>
+  <p id="loginError" style="color:#d33;text-align:center"></p>
+  <p class="muted" style="text-align:center">Demo: admin / admin123</p>
+ </div>
+</section>
+
+<div id="application" class="hidden">
+<header>
+ <div>
+  <h2>🏥 BALGURI HOSPITAL</h2>
+  <small data-i="subtitle">Hospital Management System</small>
+ </div>
+ <div class="headeractions">
+  <button class="lang" onclick="toggleLang()" id="appLang">Af-Soomaali</button>
+  <button onclick="logout()" data-i="logout">Logout</button>
+ </div>
+</header>
+<div class="layout">
+ <aside id="menu"></aside>
+ <main id="content"></main>
+</div>
+</div>
+<div id="notice"></div>
+
+<!-- Isku xidhka JavaScript-ka -->
+<script src="script.js"></script>
+</body>
+</html>
